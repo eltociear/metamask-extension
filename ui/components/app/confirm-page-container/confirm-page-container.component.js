@@ -72,7 +72,6 @@ export default class ConfirmPageContainer extends Component {
     contact: PropTypes.object,
     isOwnedAccount: PropTypes.bool,
     isFailedTransaction: PropTypes.bool,
-    onErrorMessageClick: PropTypes.func,
   };
 
   render() {
@@ -124,7 +123,6 @@ export default class ConfirmPageContainer extends Component {
       contact = {},
       isOwnedAccount,
       isFailedTransaction,
-      onErrorMessageClick,
     } = this.props;
 
     const showAddToAddressDialog =
@@ -210,7 +208,6 @@ export default class ConfirmPageContainer extends Component {
             ethGasPriceWarning={ethGasPriceWarning}
             hideTitle={hideTitle}
             isFailedTransaction={isFailedTransaction}
-            onErrorMessageClick={onErrorMessageClick}
           />
         )}
         {shouldDisplayWarning && (
