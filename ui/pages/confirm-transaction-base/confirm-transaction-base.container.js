@@ -183,6 +183,9 @@ const mapStateToProps = (state, ownProps) => {
     fromAddress,
   );
 
+  const isOptimism = getIsOptimism(state);
+  const isStandardNetwork = !isOptimism;
+
   return {
     balance,
     fromAddress,
@@ -231,7 +234,8 @@ const mapStateToProps = (state, ownProps) => {
     showLedgerSteps: fromAddressIsLedger,
     nativeCurrency,
     hardwareWalletRequiresConnection,
-    isOptimism: getIsOptimism(state),
+    isOptimism,
+    isStandardNetwork,
     hexEstimatedL1Fee,
   };
 };
