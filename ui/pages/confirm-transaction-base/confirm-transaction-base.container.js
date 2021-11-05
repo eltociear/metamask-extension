@@ -52,6 +52,7 @@ import { toChecksumHexAddress } from '../../../shared/modules/hexstring-utils';
 
 import { getGasLoadingAnimationIsShowing } from '../../ducks/app/app';
 import { isLegacyTransaction } from '../../helpers/utils/transactions.util';
+import { addHexes } from '../../helpers/utils/conversions.util';
 import ConfirmTransactionBase from './confirm-transaction-base.component';
 
 let customNonceValue = '';
@@ -186,6 +187,11 @@ const mapStateToProps = (state, ownProps) => {
   const isOptimism = getIsOptimism(state);
   const isStandardNetwork = !isOptimism;
 
+  let multilayerTotal;
+  if (!isStandardNetwork) {
+    multilayerTotal = addHexes(hexEstimatedL1Fee, hexMinimumTransactionFee);
+  }
+
   return {
     balance,
     fromAddress,
@@ -237,6 +243,7 @@ const mapStateToProps = (state, ownProps) => {
     isOptimism,
     isStandardNetwork,
     hexEstimatedL1Fee,
+    multilayerTotal,
   };
 };
 
